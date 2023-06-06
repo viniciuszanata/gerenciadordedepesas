@@ -1,27 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {InputEmail} from '../../components';
+import {StyleSheet, Text, View} from 'react-native';
+import {InputEmail, InputPassword} from '../../components';
 
 interface SignInScreenProps {
   title: String;
 }
 //função de execução criar com const
 const SignInScreen = ({title}: SignInScreenProps) => {
-  // const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
   return (
     <View style={styles.container}>
       <Text> {title} </Text>
-      <InputEmail />
-      <Text>Senha:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setPassword}
-        value={password}
-        placeholder="senha"
-        secureTextEntry={true}
-      />
+      <InputEmail email="" placeholder="E-mail" style={styles.input} />
+      <InputPassword password="" placeholder="Senha" style={styles.input} />
     </View>
   );
 };
