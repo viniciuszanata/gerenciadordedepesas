@@ -1,2 +1,1 @@
-export {InputEmail} from './input/input';
-export {InputPassword} from './input/input';
+export {InputField} from './input/input';

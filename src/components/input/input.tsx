@@ -1,67 +1,146 @@
-import React, {useEffect, useState} from 'react';
-import {StyleProp, StyleSheet, Text, TextInput, ViewStyle} from 'react-native';
+import React, {useState} from 'react';
+import {
+  KeyboardTypeOptions,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextInput,
+  ViewStyle,
+  TouchableOpacity,
+  Image,
+  View,
+} from 'react-native';
 
-interface InputEmailProps {
-  email: string;
-  placeholder: string;
-  style: StyleProp<ViewStyle>;
+type AutoCapitalizeType =
+  | 'characters'
+  | 'words'
+  | 'sentences'
+  | 'none'
+  | undefined;
+
+interface ErrorMessageProps {
+  error?: string;
 }
-interface InputPasswordProps {
-  password: string;
+
+interface InputProps {
+  value: any;
+  defaultValue?: any;
+  onFocus?: () => void;
+  onChange: (item: any) => void;
+  onSelection?: (item: any) => void;
+  style?: StyleProp<ViewStyle>;
+  isPassword?: boolean;
+  error?: string;
+  autoCapitalize?: AutoCapitalizeType;
+  multiline?: boolean;
+  numberOfLines?: number;
   placeholder: string;
-  style: StyleProp<ViewStyle>;
+  keyboard?: KeyboardTypeOptions;
+  maxLenght?: number;
+  isEnable?: boolean;
 }
 
-export const InputEmail = ({email, placeholder, style}: InputEmailProps) => {
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    return setValue(email);
-  }, [email]);
-
-  return (
-    <>
-      <Text>Email:</Text>
-      <TextInput
-        style={style ? style : styles.input}
-        onChangeText={setValue}
-        value={value}
-        placeholder={placeholder}
-      />
-    </>
-  );
+const ErrorMessage = ({error}: ErrorMessageProps) => {
+  return error ? <Text style={[styles.textError]}> {error} </Text> : null;
 };
 
-export const InputPassword = ({
-  password,
-  placeholder,
+//Mudar pra Input
+export const InputField = ({
+  value,
+  defaultValue,
+  onFocus,
+  onChange,
+  onSelection,
   style,
-}: InputPasswordProps) => {
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    return setValue(password);
-  }, [password]);
+  isPassword = false,
+  error,
+  autoCapitalize = 'none',
+  multiline,
+  numberOfLines,
+  placeholder,
+  keyboard,
+  maxLenght,
+  isEnable = true,
+}: InputProps) => {
+  const [on, setOn] = useState(false);
 
   return (
-    <>
-      <Text>Password:</Text>
-      <TextInput
-        style={style ? style : styles.input}
-        onChangeText={setValue}
-        value={value}
-        placeholder={placeholder}
-        secureTextEntry={true}
-      />
-    </>
+    <View style={styles.container}>
+      <View style={[styles.inputContainer, !!error && styles.borderError]}>
+        <TextInput
+          style={[style ? style : styles.input]}
+          textAlign="left"
+          onChangeText={(text: any) =>
+            onChange(keyboard === 'email-address' ? text.toLowerCase() : text)
+          }
+          onSelectionChange={(text: any) => onSelection!(text)}
+          defaultValue={'' || defaultValue}
+          value={value}
+          placeholder={placeholder}
+          onFocus={() => onFocus}
+          editable={isEnable}
+          maxLength={maxLenght}
+          numberOfLines={numberOfLines || 1}
+          multiline={multiline || false}
+          autoCapitalize={autoCapitalize}
+          secureTextEntry={keyboard === 'ascii-capable' && !on}
+          keyboardType={keyboard || 'default'}
+        />
+        {isPassword && (
+          <TouchableOpacity
+            onPress={() => {
+              setOn(on => !on);
+            }}
+            style={styles.password}>
+            <Image
+              source={
+                on
+                  ? require('../../assets/icon/hide-eye.png')
+                  : require('../../assets/icon/open-eye.png')
+              }
+              resizeMode={'contain'}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
+      <ErrorMessage error={error} />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    width: 'auto',
+    flexDirection: 'column',
+  },
+  inputContainer: {
+    width: '95%',
+    height: 'auto',
+    flexDirection: 'row',
+    // justifyContent: 'space-around',
+    alignItems: 'center',
+    alignContent: 'flex-start',
+    // backgroundColor: 'red',
+    // borderColor: 'red',
+    borderWidth: 0.5,
+    borderRadius: 10,
+    margin: 10,
+  },
   input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  password: {
+    position: 'absolute',
+    right: 10,
+    paddingRight: 10,
+  },
+  textError: {
+    color: 'red',
+  },
+  borderError: {
+    borderColor: 'red',
   },
 });
