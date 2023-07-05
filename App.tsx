@@ -1,12 +1,19 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import SignInScreen from './src/screens/account/SigInScreen';
+import {SignInScreen} from './src/screens/account/SigInScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {DashboardScreen} from './src/screens/dashboard/DashboardScreen';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <SignInScreen title={'Login'} />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="SigInScreen" component={SignInScreen} />
+        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
