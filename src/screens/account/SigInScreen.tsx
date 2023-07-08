@@ -63,7 +63,18 @@ export const SignInScreen = () => {
           isPassword={true}
           error={passwordError ? 'Your Password is incorrect' : undefined}
         />
-        <ButtonInput title={'Login'} onPress={handlerButton} />
+        <ButtonInput
+          title={'Login'}
+          onPress={handlerButton}
+          style={styles.button}
+          titleStyle={styles.buttonText}
+        />
+        <ButtonInput
+          title={'SignUp'}
+          onPress={handlerButton}
+          style={styles.signUpButton}
+          titleStyle={styles.signUpButtonText}
+        />
       </View>
     </SafeAreaView>
   );
@@ -81,11 +92,34 @@ const styles = StyleSheet.create({
     padding: 10,
     // backgroundColor: 'aqua',
   },
+  button: {
+    backgroundColor: '#993399',
+    padding: 10,
+    margin: 5,
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 0.5,
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  signUpButton: {
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+    margin: 5,
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 0.5,
+  },
+  signUpButtonText: {
+    color: '#993399',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
 });
-
-//Botão de LogOut
-//Layouts da dashboard
-//Autenticação
-//Cadastro do email
-//Fazer validação email + password
-//Navegações
