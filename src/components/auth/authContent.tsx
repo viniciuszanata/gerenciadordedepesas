@@ -3,7 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import {InputField} from '../../components';
 import {ButtonInput} from '../../components/input/button';
 import {AccountStore} from '../../store/account/accountStore';
-
+import {useNavigation} from '@react-navigation/native';
 interface AuthContentProps {
   onSuccessLogin: () => void;
 }
@@ -28,6 +28,14 @@ export const AuthContent = ({onSuccessLogin}: AuthContentProps) => {
       } else {
         setPasswordError(true);
       }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const navigation = useNavigation();
+  const handlerSignUpButton = () => {
+    try {
+      navigation.navigate('SignUpScreen' as never);
     } catch (err) {
       console.log(err);
     }
@@ -61,6 +69,12 @@ export const AuthContent = ({onSuccessLogin}: AuthContentProps) => {
         style={styles.button}
         titleStyle={styles.buttonText}
       />
+      <ButtonInput
+        title={'SignUp'}
+        onPress={handlerSignUpButton}
+        style={styles.signUpButton}
+        titleStyle={styles.signUpButtonText}
+      />
     </View>
   );
 };
@@ -86,6 +100,21 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  signUpButton: {
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+    margin: 5,
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 0.5,
+  },
+  signUpButtonText: {
+    color: '#993399',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
