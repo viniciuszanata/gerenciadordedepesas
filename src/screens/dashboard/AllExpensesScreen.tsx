@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import ExpensesOutput from '../../components/expenses/expensesOutput';
+import {MOCK_EXPENSES} from '../../store/expense/mockExpenses';
 
-interface AllExpenseScreenProps {}
-
-const AllExpensesScreen = (props: AllExpenseScreenProps) => {
+const AllExpensesScreen = () => {
   return (
     <View style={styles.container}>
       <Text>AllExpenses</Text>
+      <ExpensesOutput expenses={MOCK_EXPENSES} expensesPeriod={'Total'} />
     </View>
   );
 };
