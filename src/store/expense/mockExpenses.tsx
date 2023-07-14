@@ -1,3 +1,4 @@
+//adicionar na pasta service/mock com index
 export const MOCK_EXPENSES = [
   {
     id: '1',

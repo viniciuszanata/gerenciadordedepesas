@@ -6,7 +6,6 @@ import {MOCK_EXPENSES} from '../../store/expense/mockExpenses';
 const RecentExpensesScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>RecentExpensesScreen</Text>
       <ExpensesOutput
         expenses={MOCK_EXPENSES}
         expensesPeriod={'Ultima semana'}

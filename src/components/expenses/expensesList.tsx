@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, FlatList, Text} from 'react-native';
+import {FlatList, Text} from 'react-native';
 
 interface Expense {
   id: string;
@@ -11,9 +11,7 @@ interface ExpensesListProps {
 }
 
 const ExpensesList = ({expenses}: ExpensesListProps) => {
-  const renderExpenseItem = ({item}: {item: Expense}) => (
-    <Text>{item.description}</Text>
-  );
+  const renderExpenseItem = ({item}: any) => <Text>{item.description}</Text>;
 
   return (
     <FlatList
@@ -25,7 +23,3 @@ const ExpensesList = ({expenses}: ExpensesListProps) => {
 };
 
 export default ExpensesList;
-
-const styles = StyleSheet.create({
-  container: {},
-});

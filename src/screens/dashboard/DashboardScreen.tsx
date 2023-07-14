@@ -21,14 +21,14 @@ export const DashboardScreen = () => {
           component={RecentExpensesScreen}
           options={{
             title: 'Recent Expenses',
-            tabBarIcon: () => {
-              return (
-                <Image
-                  source={require('../../assets/icon/hourglass.png')}
-                  resizeMode={'contain'}
-                />
-              );
-            },
+            // eslint-disable-next-line react/no-unstable-nested-components
+            tabBarIcon: () => (
+              <Image
+                style={styles.image}
+                source={require('../../assets/icon/hourglass.png')}
+                resizeMode={'contain'}
+              />
+            ),
           }}
         />
         <BottomTabs.Screen
@@ -36,14 +36,14 @@ export const DashboardScreen = () => {
           component={AllExpensesScreen}
           options={{
             title: 'All Expenses',
-            tabBarIcon: () => {
-              return (
-                <Image
-                  source={require('../../assets/icon/calendar.png')}
-                  resizeMode={'contain'}
-                />
-              );
-            },
+            // eslint-disable-next-line react/no-unstable-nested-components
+            tabBarIcon: () => (
+              <Image
+                style={styles.image}
+                source={require('../../assets/icon/calendar.png')}
+                resizeMode={'contain'}
+              />
+            ),
           }}
         />
       </BottomTabs.Navigator>
@@ -53,4 +53,7 @@ export const DashboardScreen = () => {
 
 const styles = StyleSheet.create({
   container: {},
+  image: {
+    tintColor: 'white',
+  },
 });
