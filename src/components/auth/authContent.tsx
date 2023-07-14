@@ -43,8 +43,8 @@ export const AuthContent = ({onSuccessLogin}: AuthContentProps) => {
 
   return (
     <View style={styles.container}>
-      <Text> Login </Text>
       <Text>Bem vindo</Text>
+      <Text> Login </Text>
       <InputField
         value={email}
         placeholder="E-mail"
@@ -64,7 +64,7 @@ export const AuthContent = ({onSuccessLogin}: AuthContentProps) => {
         error={passwordError ? 'Your Password is incorrect' : undefined}
       />
       <ButtonInput
-        title={'Login'}
+        title={'TESTE'}
         onPress={handlerButton}
         style={styles.button}
         titleStyle={styles.buttonText}
