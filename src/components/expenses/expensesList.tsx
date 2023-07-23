@@ -1,13 +1,7 @@
 import * as React from 'react';
 import {FlatList} from 'react-native';
+import {Expense} from '../../services/expenses/interfaceExpense';
 import ExpenseItem from './expensesItem';
-
-interface Expense {
-  id: string;
-  description: string;
-  amount: number;
-  date: Date;
-}
 
 interface ExpensesListProps {
   expenses: Expense[];

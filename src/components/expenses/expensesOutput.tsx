@@ -1,16 +1,12 @@
 import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
+import {Expense} from '../../services/expenses/interfaceExpense';
 import ExpensesList from './expensesList';
 import ExpensesSummary from './expensesSummary';
 
 interface ExpensesOutputProps {
   expensesPeriod: string;
-  expenses: {
-    id: string;
-    description: string;
-    amount: number;
-    date: Date;
-  }[];
+  expenses: Expense[];
 }
 
 const ExpensesOutput = ({expenses, expensesPeriod}: ExpensesOutputProps) => {

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {Expense} from '../../services/expenses/interfaceExpense';
 
 interface ExpensesSummaryProps {
   periodName: string;
-  expenses: {
-    amount: number;
-  }[];
+  expenses: Expense[];
 }
 
 const ExpensesSummary = ({periodName, expenses}: ExpensesSummaryProps) => {

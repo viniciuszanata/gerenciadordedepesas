@@ -1,14 +1,8 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, Pressable} from 'react-native';
+import {Expense} from '../../services/expenses/interfaceExpense';
 
-interface ExpenseItemProps {
-  id: string;
-  description: string;
-  amount: number;
-  date: Date;
-}
-
-const ExpenseItem = ({description, amount, date}: ExpenseItemProps) => {
+const ExpenseItem = ({description, amount, date}: Expense) => {
   return (
     <Pressable style={styles.expenseItem}>
       <View style={styles.expenseDetails}>
