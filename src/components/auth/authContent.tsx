@@ -21,7 +21,7 @@ export const AuthContent = ({onSuccessLogin}: AuthContentProps) => {
 
   const handlerButton = () => {
     try {
-      if (password === 'banana' && email === 'email@email.com') {
+      if (password === 'a' && email === 'a') {
         setPasswordError(false);
         setUser(email);
         onSuccessLogin();

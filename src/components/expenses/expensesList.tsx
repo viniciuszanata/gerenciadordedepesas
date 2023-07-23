@@ -1,9 +1,12 @@
 import * as React from 'react';
-import {FlatList, Text} from 'react-native';
+import {FlatList} from 'react-native';
+import ExpenseItem from './expensesItem';
 
 interface Expense {
   id: string;
   description: string;
+  amount: number;
+  date: Date;
 }
 
 interface ExpensesListProps {
@@ -11,7 +14,14 @@ interface ExpensesListProps {
 }
 
 const ExpensesList = ({expenses}: ExpensesListProps) => {
-  const renderExpenseItem = ({item}: any) => <Text>{item.description}</Text>;
+  const renderExpenseItem = ({item}: {item: Expense}) => (
+    <ExpenseItem
+      id={item.id}
+      description={item.description}
+      amount={item.amount}
+      date={item.date}
+    />
+  );
 
   return (
     <FlatList

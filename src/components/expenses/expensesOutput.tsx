@@ -4,7 +4,7 @@ import ExpensesList from './expensesList';
 import ExpensesSummary from './expensesSummary';
 
 interface ExpensesOutputProps {
-  expensesPeriod: String;
+  expensesPeriod: string;
   expenses: {
     id: string;
     description: string;
@@ -15,7 +15,7 @@ interface ExpensesOutputProps {
 
 const ExpensesOutput = ({expenses, expensesPeriod}: ExpensesOutputProps) => {
   return (
-    <View>
+    <View style={styles.container}>
       <ExpensesSummary expenses={expenses} periodName={expensesPeriod} />
       <ExpensesList expenses={expenses} />
     </View>
@@ -25,5 +25,7 @@ const ExpensesOutput = ({expenses, expensesPeriod}: ExpensesOutputProps) => {
 export default ExpensesOutput;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    padding: '10%',
+  },
 });

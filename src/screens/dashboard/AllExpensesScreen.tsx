@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import ExpensesOutput from '../../components/expenses/expensesOutput';
-import {MOCK_EXPENSES} from '../../store/expense/mockExpenses';
+import {MOCK_EXPENSES} from '../../services/models/expenseModel';
 
 const AllExpensesScreen = () => {
   return (

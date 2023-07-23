@@ -44,7 +44,6 @@ const ErrorMessage = ({error}: ErrorMessageProps) => {
   return error ? <Text style={[styles.textError]}> {error} </Text> : null;
 };
 
-//Mudar pra Input
 export const InputField = ({
   value,
   defaultValue,
