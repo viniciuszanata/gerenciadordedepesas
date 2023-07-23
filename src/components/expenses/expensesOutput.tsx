@@ -1,18 +1,13 @@
 import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Expense} from '../../services/expenses/interfaceExpense';
+import {ExpensePeriod} from '../../services/expenses/interfaceExpense';
 import ExpensesList from './expensesList';
 import ExpensesSummary from './expensesSummary';
 
-interface ExpensesOutputProps {
-  expensesPeriod: string;
-  expenses: Expense[];
-}
-
-const ExpensesOutput = ({expenses, expensesPeriod}: ExpensesOutputProps) => {
+const ExpensesOutput = ({expenses, expensesPeriod}: ExpensePeriod) => {
   return (
     <View style={styles.container}>
-      <ExpensesSummary expenses={expenses} periodName={expensesPeriod} />
+      <ExpensesSummary expenses={expenses} expensesPeriod={expensesPeriod} />
       <ExpensesList expenses={expenses} />
     </View>
   );

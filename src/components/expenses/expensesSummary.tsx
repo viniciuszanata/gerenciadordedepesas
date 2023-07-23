@@ -1,19 +1,14 @@
 import * as React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {Expense} from '../../services/expenses/interfaceExpense';
+import {ExpensePeriod} from '../../services/expenses/interfaceExpense';
 
-interface ExpensesSummaryProps {
-  periodName: string;
-  expenses: Expense[];
-}
-
-const ExpensesSummary = ({periodName, expenses}: ExpensesSummaryProps) => {
+const ExpensesSummary = ({expensesPeriod, expenses}: ExpensePeriod) => {
   const expensesSum = expenses.reduce((sum, expense) => {
     return sum + expense.amount;
   }, 0);
   return (
     <View style={styles.container}>
-      <Text style={styles.period}>{periodName}</Text>
+      <Text style={styles.period}>{expensesPeriod}</Text>
       <Text style={styles.sum}>R$ {expensesSum.toFixed(2)}</Text>
     </View>
   );
