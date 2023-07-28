@@ -9,12 +9,7 @@ interface ExpensesListProps {
 
 const ExpensesList = ({expenses}: ExpensesListProps) => {
   const renderExpenseItem = ({item}: {item: Expense}) => (
-    <ExpenseItem
-      id={item.id}
-      description={item.description}
-      amount={item.amount}
-      date={item.date}
-    />
+    <ExpenseItem {...item} />
   );
 
   return (

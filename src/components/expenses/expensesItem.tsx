@@ -2,12 +2,19 @@ import * as React from 'react';
 import {Text, View, StyleSheet, Pressable} from 'react-native';
 import {Expense} from '../../services/expenses/interfaceExpense';
 
+function formattedDate(date: Date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
 const ExpenseItem = ({description, amount, date}: Expense) => {
   return (
     <Pressable style={styles.expenseItem}>
       <View style={styles.expenseDetails}>
         <Text style={styles.description}>{description}</Text>
-        <Text style={styles.date}>{date.toISOString()}</Text>
+        <Text style={styles.date}>{formattedDate(date)}</Text>
       </View>
       <View style={styles.amountContainer}>
         <Text style={styles.amount}>R$ {amount.toFixed(2)}</Text>

@@ -30,4 +30,28 @@ export const MOCK_EXPENSES = [
     amount: 120.5,
     date: new Date('2023-02-18'),
   },
+  {
+    id: '6',
+    description: 'Teclado',
+    amount: 189,
+    date: new Date('2022-12-19'),
+  },
+  {
+    id: '7',
+    description: 'Remedio',
+    amount: 8.59,
+    date: new Date('2022-12-19'),
+  },
+  {
+    id: '8',
+    description: 'Mouse',
+    amount: 119.89,
+    date: new Date('2022-12-19'),
+  },
+  {
+    id: '9',
+    description: 'Tennis Nike',
+    amount: 219,
+    date: new Date('2022-12-19'),
+  },
 ];
