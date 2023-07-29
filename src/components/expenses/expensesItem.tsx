@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderRadius: 6,
+    marginHorizontal: 16,
   },
   description: {
     color: '#e4d9fd',

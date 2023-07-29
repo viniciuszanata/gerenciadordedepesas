@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import {Expense} from '../../services/expenses/interfaceExpense';
 import ExpenseItem from './expensesItem';
 
@@ -14,6 +14,7 @@ const ExpensesList = ({expenses}: ExpensesListProps) => {
 
   return (
     <FlatList
+      style={styles.flatList}
       data={expenses}
       renderItem={renderExpenseItem}
       keyExtractor={item => item.id}
@@ -22,3 +23,9 @@ const ExpensesList = ({expenses}: ExpensesListProps) => {
 };
 
 export default ExpensesList;
+
+const styles = StyleSheet.create({
+  flatList: {
+    marginBottom: 90,
+  },
+});

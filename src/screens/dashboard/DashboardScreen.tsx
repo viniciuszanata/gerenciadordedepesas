@@ -6,12 +6,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ButtonAdd} from '../../components/input/buttonAdd';
 
 const BottomTabs = createBottomTabNavigator();
-// const handlerButton = () => {
-//   try {
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 export const DashboardScreen = () => {
   return (
@@ -55,7 +49,7 @@ export const DashboardScreen = () => {
         />
       </BottomTabs.Navigator>
       <View style={styles.addButtonContainer}>
-        <ButtonAdd onPress={() => {}} style={styles.button} />
+        <ButtonAdd onPress={() => {}} />
       </View>
     </>
   );
@@ -65,14 +59,6 @@ const styles = StyleSheet.create({
   container: {},
   image: {
     tintColor: 'white',
-  },
-  button: {
-    backgroundColor: '#993399',
-    padding: 10,
-    margin: 5,
-    alignItems: 'center',
-    borderRadius: 10,
-    borderWidth: 0.5,
   },
   addButtonContainer: {
     position: 'absolute',
