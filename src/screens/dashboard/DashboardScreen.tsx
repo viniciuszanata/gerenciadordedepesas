@@ -4,10 +4,21 @@ import AllExpensesScreen from './AllExpensesScreen';
 import RecentExpensesScreen from './RecentExpensesScreen';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {ButtonAdd} from '../../components/input/buttonAdd';
+import {useNavigation} from '@react-navigation/native';
 
 const BottomTabs = createBottomTabNavigator();
 
 export const DashboardScreen = () => {
+  const navigation = useNavigation();
+
+  const handlerAddButton = () => {
+    try {
+      navigation.navigate('ManageExpenseScreen' as never);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <BottomTabs.Navigator
@@ -49,7 +60,7 @@ export const DashboardScreen = () => {
         />
       </BottomTabs.Navigator>
       <View style={styles.addButtonContainer}>
-        <ButtonAdd onPress={() => {}} />
+        <ButtonAdd onPress={handlerAddButton} />
       </View>
     </>
   );

@@ -11,7 +11,11 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {backgroundColor: '#993399'},
+          headerTintColor: 'white',
+        }}>
         <Stack.Screen
           name="SignInScreen"
           component={SignInScreen}
@@ -30,6 +34,9 @@ const App = () => {
         <Stack.Screen
           name="ManageExpenseScreen"
           component={ManageExpenseScreen}
+          options={{
+            presentation: 'modal',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
