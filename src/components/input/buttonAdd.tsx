@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-  Platform,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
-
-interface ButtonProps {
-  onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-}
+import {Platform, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {ButtonProps} from '../../services/buttons/interfaceButton';
 
 export const ButtonAdd = ({onPress, style}: ButtonProps) => {
   const text = Platform.OS === 'android' ? '+' : 'x';

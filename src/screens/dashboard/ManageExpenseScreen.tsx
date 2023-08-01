@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useLayoutEffect} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {ButtonDelete} from '../../components/input/buttonDelete';
 
 interface ManageExpenseScreenProps {
   route: any;
@@ -17,9 +18,17 @@ const ManageExpenseScreen = ({route, navigation}: ManageExpenseScreenProps) => {
     });
   }, [navigation, isEditing]);
 
+  const handlerButton = () => {
+    try {
+      navigation.navigate('SignUpScreen' as never);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text>{editedExpenseId}</Text>
+      {isEditing && <ButtonDelete onPress={handlerButton} />}
     </View>
   );
 };

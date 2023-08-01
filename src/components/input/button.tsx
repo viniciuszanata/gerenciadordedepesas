@@ -1,26 +1,13 @@
 import React from 'react';
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
-
-interface ButtonProps {
-  title: string;
-  onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-  titleStyle?: StyleProp<TextStyle>;
-}
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {ButtonInputProps} from '../../services/buttons/interfaceButton';
 
 export const ButtonInput = ({
   title,
   onPress,
   style,
   titleStyle,
-}: ButtonProps) => {
+}: ButtonInputProps) => {
   return (
     <TouchableOpacity style={style || styles.button} onPress={onPress}>
       <Text style={(styles.buttonText, titleStyle)}>{title}</Text>
