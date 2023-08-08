@@ -28,7 +28,11 @@ const ManageExpenseScreen = ({route, navigation}: ManageExpenseScreenProps) => {
 
   return (
     <View style={styles.container}>
-      {isEditing && <ButtonDelete onPress={handlerButton} />}
+      {isEditing && (
+        <View style={styles.deleteContainer}>
+          <ButtonDelete onPress={handlerButton} />
+        </View>
+      )}
     </View>
   );
 };
@@ -36,5 +40,14 @@ const ManageExpenseScreen = ({route, navigation}: ManageExpenseScreenProps) => {
 export default ManageExpenseScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
+  deleteContainer: {
+    marginTop: 16,
+    paddingTop: 8,
+    borderTopWidth: 2,
+    borderTopColor: '#bf00ff',
+    alignItems: 'center',
+  },
 });

@@ -15,7 +15,6 @@ export const ButtonDelete = ({onPress}: ButtonProps) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'red',
     margin: 5,
     alignItems: 'center',
     justifyContent: 'center',
