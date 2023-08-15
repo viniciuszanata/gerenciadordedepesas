@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import ExpensesOutput from '../../components/expenses/expensesOutput';
 import {MOCK_EXPENSES} from '../../services/models/expenseModel';

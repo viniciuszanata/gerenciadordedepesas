@@ -1,14 +1,8 @@
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import * as React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Expense} from '../../services/expenses/interfaceExpense';
-
-function formattedDate(date: Date) {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
-}
+import * as Utils from '../../utils';
 
 const ExpenseItem = ({id, description, amount, date}: Expense) => {
   const navigation = useNavigation();
@@ -17,7 +11,9 @@ const ExpenseItem = ({id, description, amount, date}: Expense) => {
     try {
       navigation.navigate(
         'ManageExpenseScreen' as never,
-        {expenseId: id} as never,
+        {
+          expenseId: id,
+        } as never,
       );
     } catch (err) {
       console.log(err);
@@ -28,7 +24,7 @@ const ExpenseItem = ({id, description, amount, date}: Expense) => {
     <TouchableOpacity style={styles.expenseItem} onPress={handlerItemPress}>
       <View style={styles.expenseDetails}>
         <Text style={styles.description}>{description}</Text>
-        <Text style={styles.date}>{formattedDate(date)}</Text>
+        <Text style={styles.date}>{Utils.formattedDate(date)}</Text>
       </View>
       <View style={styles.amountContainer}>
         <Text style={styles.amount}>R$ {amount.toFixed(2)}</Text>

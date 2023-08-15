@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {useLayoutEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ButtonDelete} from '../../components/input/buttonDelete';
@@ -18,7 +18,7 @@ const ManageExpenseScreen = ({route, navigation}: ManageExpenseScreenProps) => {
     });
   }, [navigation, isEditing]);
 
-  const handlerButton = () => {
+  const handlerDeleteButton = () => {
     try {
       navigation.navigate('SignUpScreen' as never);
     } catch (err) {
@@ -30,7 +30,7 @@ const ManageExpenseScreen = ({route, navigation}: ManageExpenseScreenProps) => {
     <View style={styles.container}>
       {isEditing && (
         <View style={styles.deleteContainer}>
-          <ButtonDelete onPress={handlerButton} />
+          <ButtonDelete onPress={handlerDeleteButton} />
         </View>
       )}
     </View>
@@ -49,5 +49,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 2,
     borderTopColor: '#bf00ff',
     alignItems: 'center',
+  },
+  teste: {
+    backgroundColor: 'red',
   },
 });
