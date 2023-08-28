@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import ExpensesOutput from '../../components/expenses/expensesOutput';
-import {RecentExpensesScreenProps} from '../../services/expenses/interfaceExpense';
+import {ExpensesScreenProps} from '../../services/expenses/interfaceExpense';
 import {inject, observer} from 'mobx-react';
 
 const AllExpensesScreen = inject('expensesStore')(
-  observer(({expensesStore}: RecentExpensesScreenProps) => {
+  observer(({expensesStore}: ExpensesScreenProps) => {
     const {expenses} = expensesStore!;
 
     return (

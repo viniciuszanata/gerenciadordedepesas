@@ -33,10 +33,23 @@ const ManageExpenseScreen = inject('expensesStore')(
 
     const handlerConfirmButton = () => {
       try {
-        navigation.goBack();
+        if (isEditing) {
+          expensesStore.updateExpense(editedExpenseId, {
+            description: 'Updated Test 200',
+            amount: 40.2,
+            date: new Date('2023-08-28'),
+          });
+        } else {
+          expensesStore.addExpense({
+            description: 'Add Test 200',
+            amount: 16.59,
+            date: new Date('2023-08-27'),
+          });
+        }
       } catch (err) {
         console.log(err);
       }
+      navigation.goBack();
     };
 
     const handlerCancelButton = () => {

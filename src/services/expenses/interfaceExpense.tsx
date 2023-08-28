@@ -11,6 +11,6 @@ export interface ExpensePeriod {
   expensesPeriod: string;
   fallbackText?: string;
 }
-export interface RecentExpensesScreenProps {
+export interface ExpensesScreenProps {
   expensesStore?: ExpensesStore;
 }

@@ -2,11 +2,11 @@ import {inject, observer} from 'mobx-react';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import ExpensesOutput from '../../components/expenses/expensesOutput';
-import {RecentExpensesScreenProps} from '../../services/expenses/interfaceExpense';
+import {ExpensesScreenProps} from '../../services/expenses/interfaceExpense';
 import {getLastWeek} from '../../utils';
 
 const RecentExpensesScreen = inject('expensesStore')(
-  observer(({expensesStore}: RecentExpensesScreenProps) => {
+  observer(({expensesStore}: ExpensesScreenProps) => {
     const {expenses} = expensesStore!;
 
     const today = new Date();
