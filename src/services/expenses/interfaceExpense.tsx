@@ -1,3 +1,4 @@
+import ExpensesStore from '../../store/expense/expenseStore';
 export interface Expense {
   id: string;
   description: string;
@@ -8,4 +9,8 @@ export interface Expense {
 export interface ExpensePeriod {
   expenses: Expense[];
   expensesPeriod: string;
+  fallbackText?: string;
+}
+export interface RecentExpensesScreenProps {
+  expensesStore?: ExpensesStore;
 }
