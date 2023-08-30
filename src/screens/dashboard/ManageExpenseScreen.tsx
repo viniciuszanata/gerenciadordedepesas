@@ -1,90 +1,90 @@
-import {inject, observer} from 'mobx-react';
+import {observer} from 'mobx-react';
 import React from 'react';
 import {useLayoutEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {ButtonInput} from '../../components/input/button';
 import {ButtonDelete} from '../../components/input/buttonDelete';
+import {ExpensesStore} from '../../store/expense/expenseStore';
 
-interface ManageExpenseScreenProps {
-  route: any;
-  navigation: any;
-  expensesStore?: any;
-}
+//criar usestate para receber informação e useEfect ou useLayout pra add oq vem do store
+const ManageExpenseScreen = observer(({route, navigation}) => {
+  const editedExpenseId = route.params?.expenseId;
+  const isEditing = !!editedExpenseId;
 
-const ManageExpenseScreen = inject('expensesStore')(
-  observer(({route, navigation, expensesStore}: ManageExpenseScreenProps) => {
-    const editedExpenseId = route.params?.expenseId;
-    const isEditing = !!editedExpenseId;
+  const expensesStoreInstance = ExpensesStore();
 
-    useLayoutEffect(() => {
-      navigation.setOptions({
-        title: isEditing ? 'Edit Expense' : 'Add Expense',
-      });
-    }, [navigation, isEditing]);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: isEditing ? 'Edit Expense' : 'Add Expense',
+    });
+  }, [navigation, isEditing]);
+  /** @description
+   * O array de dependências [navigation, isEditing] indica que o efeito deve ser executado sempre que uma das dependências (ou ambas) sofrer uma alteração.
+   * Ou seja, sempre que o objeto navigation ou o valor de isEditing mudar, o useLayoutEffect será executado.*/
 
-    const handlerDeleteButton = () => {
-      try {
-        expensesStore.deleteExpense(editedExpenseId);
-        navigation.goBack();
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    const handlerConfirmButton = () => {
-      try {
-        if (isEditing) {
-          expensesStore.updateExpense(editedExpenseId, {
-            description: 'Updated Test 200',
-            amount: 40.2,
-            date: new Date('2023-08-28'),
-          });
-        } else {
-          expensesStore.addExpense({
-            description: 'Add Test 200',
-            amount: 16.59,
-            date: new Date('2023-08-27'),
-          });
-        }
-      } catch (err) {
-        console.log(err);
-      }
+  const handlerDeleteButton = () => {
+    try {
+      expensesStoreInstance.deleteExpense(editedExpenseId);
       navigation.goBack();
-    };
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    const handlerCancelButton = () => {
-      try {
-        navigation.goBack();
-      } catch (err) {
-        console.log(err);
+  const handlerConfirmButton = () => {
+    try {
+      if (isEditing) {
+        expensesStoreInstance.updateExpense(editedExpenseId, {
+          description: 'Updated Test 200',
+          amount: 40.2,
+          date: new Date('2023-08-28'),
+        });
+      } else {
+        expensesStoreInstance.addExpense({
+          id: '',
+          description: 'Add Test 200',
+          amount: 16.59,
+          date: new Date('2023-08-27'),
+        });
       }
-    };
+    } catch (err) {
+      console.log(err);
+    }
+    navigation.goBack();
+  };
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.buttons}>
-          <ButtonInput
-            style={[styles.button, styles.cancelButton]}
-            onPress={handlerCancelButton}
-            title={'Cancel'}
-            titleStyle={[styles.buttonText, styles.cancelButtonText]}
-          />
-          <ButtonInput
-            style={styles.button}
-            onPress={handlerConfirmButton}
-            title={isEditing ? 'Update' : 'Add'}
-            titleStyle={styles.buttonText}
-          />
-        </View>
-        {isEditing && (
-          <View style={styles.deleteContainer}>
-            <ButtonDelete onPress={handlerDeleteButton} />
-          </View>
-        )}
+  const handlerCancelButton = () => {
+    try {
+      navigation.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.buttons}>
+        <ButtonInput
+          style={[styles.button, styles.cancelButton]}
+          onPress={handlerCancelButton}
+          title={'Cancel'}
+          titleStyle={[styles.buttonText, styles.cancelButtonText]}
+        />
+        <ButtonInput
+          style={styles.button}
+          onPress={handlerConfirmButton}
+          title={isEditing ? 'Update' : 'Add'}
+          titleStyle={styles.buttonText}
+        />
       </View>
-    );
-  }),
-);
+      {isEditing && (
+        <View style={styles.deleteContainer}>
+          <ButtonDelete onPress={handlerDeleteButton} />
+        </View>
+      )}
+    </View>
+  );
+});
 
 export default ManageExpenseScreen;
 

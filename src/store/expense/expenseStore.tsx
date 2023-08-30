@@ -1,17 +1,13 @@
-import {makeObservable, observable, action} from 'mobx';
+import {makeAutoObservable} from 'mobx';
 import {Expense} from '../../services/expenses/interfaceExpense';
 import {MOCK_EXPENSES} from '../../services/models/expenseModel';
+import {getLastWeek} from '../../utils';
 
-class ExpensesStore {
-  expenses: Expense[] = MOCK_EXPENSES;
+class ExpensesStoreMbx {
+  public expenses: Expense[] = MOCK_EXPENSES;
 
   constructor() {
-    makeObservable(this, {
-      expenses: observable,
-      addExpense: action,
-      deleteExpense: action,
-      updateExpense: action,
-    });
+    makeAutoObservable(this);
   }
 
   addExpense(expenseData: Expense) {
@@ -36,6 +32,27 @@ class ExpensesStore {
       this.expenses[index] = {...this.expenses[index], ...expenseData};
     }
   }
+
+  getFilteredExpenses(filterType: 'all' | 'recent'): Expense[] {
+    if (filterType === 'all') {
+      return this.expenses;
+    } else if (filterType === 'recent') {
+      const today = new Date();
+      const date7DaysAgo = getLastWeek(today, 7);
+      return this.expenses.filter(expense => {
+        const expenseDate = new Date(expense.date);
+        return expenseDate >= date7DaysAgo && expenseDate <= today;
+      });
+    }
+    return [];
+  }
 }
 
-export default ExpensesStore;
+let singleton: ExpensesStoreMbx | null;
+
+export const ExpensesStore = () => {
+  if (!singleton) {
+    singleton = new ExpensesStoreMbx();
+  }
+  return singleton;
+};

@@ -6,10 +6,10 @@ import {SignUpScreen} from './src/screens/account/SignUpScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Provider} from 'mobx-react';
-import ExpensesStore from './src/store/expense/expenseStore';
+import {ExpensesStore} from './src/store/expense/expenseStore';
 
 const Stack = createNativeStackNavigator();
-const expensesStore = new ExpensesStore();
+const expensesStore = ExpensesStore();
 
 const App = () => {
   return (
