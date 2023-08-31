@@ -35,7 +35,7 @@ class ExpensesStoreMbx {
 
   getFilteredExpenses(filterType: 'all' | 'recent'): Expense[] {
     if (filterType === 'all') {
-      return this.expenses;
+      return [...this.expenses];
     } else if (filterType === 'recent') {
       const today = new Date();
       const date7DaysAgo = getLastWeek(today, 7);

@@ -6,10 +6,7 @@ import {ExpensesStore} from '../../store/expense/expenseStore';
 
 const AllExpensesScreen = observer(() => {
   const expensesStoreInstance = ExpensesStore();
-  const {expenses} = ExpensesStore();
   const filteredExpenses = expensesStoreInstance.getFilteredExpenses('all');
-
-  console.log(expenses);
 
   return (
     <View style={styles.container}>
